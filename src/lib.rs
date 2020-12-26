@@ -26,7 +26,7 @@ macro_rules! result_of {
 pub struct Entry {
     pub id: lsp::NumberOrString,
     #[serde(flatten)]
-    data: Element
+    pub data: Element
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -101,8 +101,8 @@ pub enum Edge {
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct EdgeData {
-    in_v: lsp::NumberOrString,
-    out_v: lsp::NumberOrString,
+    pub in_v: lsp::NumberOrString,
+    pub out_v: lsp::NumberOrString,
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -124,8 +124,8 @@ pub enum Item {
 #[serde(rename_all = "camelCase")]
 pub struct Document {
     #[serde(with = "url_serde")]
-    uri: lsp::Url,
-    language_id: Language
+    pub uri: lsp::Url,
+    pub language_id: Language
 }
 
 /// https://github.com/Microsoft/language-server-protocol/blob/master/indexFormat/specification.md#result-set
@@ -133,7 +133,7 @@ pub struct Document {
 #[serde(rename_all = "camelCase")]
 pub struct ResultSet {
     #[serde(skip_serializing_if = "Option::is_none")]
-    key: Option<String>,
+    pub key: Option<String>,
 }
 
 /// https://github.com/Microsoft/language-server-protocol/blob/master/indexFormat/specification.md#the-project-vertex
@@ -141,8 +141,8 @@ pub struct ResultSet {
 #[serde(rename_all = "camelCase")]
 pub struct Project {
     #[serde(with = "url_serde")]
-    project_file: lsp::Url,
-    language_id: Language
+    pub project_file: lsp::Url,
+    pub language_id: Language
 }
 
 /// https://github.com/Microsoft/language-server-protocol/issues/213
